@@ -1,0 +1,31 @@
+// given an array return the target sum .using recursio  solved 
+//const canSum=(targetSum,numbers)=>{
+//     if(targetSum===0) return true;
+//     if(targetSum<0) return false;
+//     for(let num of numbers){
+//         const reminder=targetSum-num;
+//         if(canSum(reminder,numbers)===true) {
+//             return true
+//         }
+//     }
+//     return false;
+// }
+// console.log(canSum(5,[4,-1,1,6,5]))
+
+
+const canSum=(targetSum,numbers,memo={})=>{
+    if(targetSum in memo) return memo[targetSum];
+    if(targetSum===0) return true;
+    if(targetSum<0) return false;
+    for(let num of numbers){
+        const reminder=targetSum-num;
+        if(canSum(reminder,numbers)===true) {
+            memo[targetSum]=true
+            return true
+        }
+    }
+    memo[targetSum]=false;
+    return false;
+}
+console.log(canSum(5,[4,1,6,5]))
+
