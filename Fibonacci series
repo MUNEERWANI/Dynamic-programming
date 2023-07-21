@@ -1,0 +1,41 @@
+// The Fibonacci series, named after Italian mathematician named Leonardo Pisano
+//  Bogollo, later known as Fibonacci, is a series (sum) formed by Fibonacci 
+// numbers denoted as Fn. The fibonacci series numbers are given as: 0, 1, 1, 2, 3, 5, 8, 13, 21, 38, . . . 
+// In a Fibonacci series, every term is the sum of the preceding two terms, starting from 0 and 1 as the first
+//  and second terms. In some old references, the term '0' might be omitted. 
+
+// const fib=(n)=>{
+//     if(n<=2) return 1;
+//     return fib(n-1)+fib(n-2);//solving by recursion 
+// }
+
+// console.log(fib(4))
+// console.log(fib(5))
+// console.log(fib(50))
+//problem with recursion is that it has complexity of 2 (power n)  for values like  n=20  it will give complexity or make steps 2^20 whiich is not practical as i checked for fib(50) output
+//did not came even i waited for over 10 minutes  
+//we saw a lot of steps getting repeated so therefore we will use dynamic programming we uses concept of memoization 
+//stores values or operations which have been done so in case if they agian arise we can just replace them
+const fib=(n,memo={})=>{
+    if(n in memo) return memo[n]
+    if(n<=2) return 1;
+    memo[n]= fib(n-1,memo)+fib(n-2,memo);//solving by recursion 
+    return memo[n]
+}
+
+console.log(fib(4))
+console.log(fib(5))
+console.log(fib(50))
+
+
+//complexity O(n) time and space both
+// we save the values in the object and we done have to travel again and again to get values 
+//we just check them in our object and return
+//memo={
+//     3:2,
+//     4:3,
+//     5:5
+//     6:8
+// }
+//next we have fib(5 ) we will just check in object and return
+
